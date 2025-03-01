@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/raiseticket.css"; // Import the CSS file
-import { useNavigate } from "react-router-dom"; 
+ 
 
 const RaiseTicket = () => {
   const [formData, setFormData] = useState({
@@ -15,8 +15,7 @@ const RaiseTicket = () => {
 
   const [userId, setUserId] = useState(null);
   const [selectedFiles, setSelectedFiles] = useState([]); // Store selected file names
-  const navigate = useNavigate(); // Initialize navigate function
-
+  
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem("user"));
     if (loggedInUser && loggedInUser.id) {
@@ -73,7 +72,7 @@ const RaiseTicket = () => {
       }
 
       const response = await axios.post(
-        "https://polysia-ticket-management-backend.onrender.com/api/createtickets",
+        "/api/createtickets",
         formDataToSend,
         {
           headers: {

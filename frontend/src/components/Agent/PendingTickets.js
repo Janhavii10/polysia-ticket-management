@@ -22,13 +22,12 @@ const PendingTickets = () => {
                     return;
                 }
 
-                const response = await axios.get("https://polysia-ticket-management-backend.onrender.com/api/assignedtickets", {
+                const response = await axios.get("/api/assignedtickets", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
                 console.log("Fetched Tickets:", response.data.tickets);
                 
-                // Filter only "Open" status tickets
                 const openTickets = response.data.tickets.filter(ticket => ticket.status === "Open");
                 setTickets(openTickets);
                 setFilteredTickets(openTickets);

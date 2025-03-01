@@ -9,7 +9,7 @@ const PendingUser = () => {
     // Fetch pending users on component mount
     const fetchPendingUsers = async () => {
       try {
-        const response = await axios.get('https://polysia-ticket-management-backend.onrender.com/api/admin/pending-users');
+        const response = await axios.get('/api/admin/pending-users');
         setPendingUsers(response.data.pendingUsers);
       } catch (err) {
         console.error(err);
@@ -21,7 +21,7 @@ const PendingUser = () => {
 
   const approveUser = async (id) => {
     try {
-      await axios.post('https://polysia-ticket-management-backend.onrender.com/api/admin/approve', { pendingUserId: id });
+      await axios.post('/api/admin/approve', { pendingUserId: id });
       setPendingUsers((prev) => prev.filter((user) => user._id !== id));
     } catch (err) {
       console.error(err);
@@ -30,7 +30,7 @@ const PendingUser = () => {
 
   const rejectUser = async (id) => {
     try {
-      await axios.post('https://polysia-ticket-management-backend.onrender.com/api/admin/reject', { pendingUserId: id });
+      await axios.post('/api/admin/reject', { pendingUserId: id });
       setPendingUsers((prev) => prev.filter((user) => user._id !== id));
     } catch (err) {
       console.error(err);

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom'; 
 import '../styles/login.css';
 
 
@@ -13,7 +12,7 @@ const Login = () => {
   });
 
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,7 +21,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://polysia-ticket-management-backend.onrender.com/api/login", formData);
+      const response = await axios.post("/api/login", formData);
   
       if (response.data.message === "Login successful") {
         const token = response.data.token;

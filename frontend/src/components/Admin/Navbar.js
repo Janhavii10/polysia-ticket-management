@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom"; // Import NavLink
-import "../../styles/navbar.css"; // Import your custom CSS
+import "../../styles/navbar.css"; 
 import axios from "axios";
 
 const AdminNavbar = () => {
@@ -9,10 +9,10 @@ const AdminNavbar = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const token = localStorage.getItem("token"); // Assuming you store the JWT in localStorage
-        const response = await axios.get("https://polysia-ticket-management-backend.onrender.com/api/user/profile", {
+        const token = localStorage.getItem("token"); 
+        const response = await axios.get("/api/user/profile", {
           headers: {
-            Authorization: `Bearer ${token}`, // Add the token to the request headers
+            Authorization: `Bearer ${token}`, 
           },
         });
 
@@ -73,11 +73,11 @@ const AdminNavbar = () => {
 
           {/* Right Section */}
           <ul className="navbar-nav ms-auto d-flex align-items-center">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link" href="#">
                 <i className="bi bi-bell-fill"></i>
               </a>
-            </li>
+            </li> */}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle d-flex align-items-center"

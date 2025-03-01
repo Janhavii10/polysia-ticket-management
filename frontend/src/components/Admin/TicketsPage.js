@@ -19,7 +19,7 @@ const TicketsPage = () => {
       }
 
       try {
-        const response = await axios.get("https://polysia-ticket-management-backend.onrender.com/api/showtickets", {
+        const response = await axios.get("/api/showtickets", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTickets(response.data.tickets);
@@ -33,7 +33,7 @@ const TicketsPage = () => {
         const token = localStorage.getItem("token");
         if (!token) throw new Error("No token found. Please log in.");
 
-        const response = await axios.get("https://polysia-ticket-management-backend.onrender.com/api/agents", {
+        const response = await axios.get("/api/agents", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -53,7 +53,7 @@ const TicketsPage = () => {
       const token = localStorage.getItem("token");
       if (selectedAgent[ticketId]) {
         await axios.put(
-          `https://polysia-ticket-management-backend.onrender.com/api/tickets/${ticketId}/assign`,
+          `/api/tickets/${ticketId}/assign`,
           { agent_id: selectedAgent[ticketId] },
           { headers: { Authorization: `Bearer ${token}` } }
         );

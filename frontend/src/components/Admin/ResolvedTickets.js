@@ -11,7 +11,7 @@ const ResolvedTickets = () => {
     useEffect(() => {
         const fetchResolvedTickets = async () => {
             try {
-                const response = await axios.get("https://polysia-ticket-management-backend.onrender.com/api/tickets/resolved");
+                const response = await axios.get("/api/tickets/resolved");
                 setTickets(response.data);
             } catch (error) {
                 console.error("Error fetching tickets:", error);
@@ -24,7 +24,7 @@ const ResolvedTickets = () => {
     // Handle closing a ticket
     const handleCloseTicket = async (id) => {
         try {
-            await axios.put(`https://polysia-ticket-management-backend.onrender.com/api/tickets/close/${id}`);
+            await axios.put(`/api/tickets/close/${id}`);
             setTickets(tickets.filter(ticket => ticket._id !== id)); // Remove from UI
         } catch (error) {
             console.error("Error closing ticket:", error);

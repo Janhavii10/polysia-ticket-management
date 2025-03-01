@@ -29,7 +29,7 @@ const TicketDetails = () => {
         const fetchTicketDetails = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await axios.get(`https://polysia-ticket-management-backend.onrender.com/api/ticket/${ticketId}`, {
+                const response = await axios.get(`/api/ticket/${ticketId}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -37,7 +37,7 @@ const TicketDetails = () => {
                     ...response.data.ticket,
                     attachments: response.data.ticket.attachments.map(file => ({
                         ...file,
-                        fileUrl: `https://polysia-ticket-management-backend.onrender.com/${file.file_url}`,
+                        fileUrl: `/${file.file_url}`,
                     })),
                 };
                 setTicket(updatedTicket);
@@ -155,7 +155,7 @@ const TicketDetails = () => {
                             <p>No attachments available.</p>
                         )}
                     </div>
-                    {/* Rate Us Section - Outside Attachments */}
+                    {/* Rate Us Section */}
                     {ticket.status === "Closed" && (
                         <div className="rate-us-container">
                             <button className="rate-us-button" onClick={() => setShowRatingModal(true)}>Rate Us</button>

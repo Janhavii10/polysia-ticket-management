@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom"; // Import NavLink
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS
-import "../../styles/navbar.css"; // Import your custom CSS
+import "bootstrap/dist/css/bootstrap.min.css"; 
+import "../../styles/navbar.css"; 
 import axios from "axios";
 
 const EmployeeNavbar = () => {
@@ -11,8 +11,8 @@ const EmployeeNavbar = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const token = localStorage.getItem("token"); // Assuming you store the JWT in localStorage
-        const response = await axios.get("https://polysia-ticket-management-backend.onrender.com/api/user/profile", {
+        const token = localStorage.getItem("token"); 
+        const response = await axios.get("/api/user/profile", {
           headers: {
             Authorization: `Bearer ${token}`, // Add the token to the request headers
           },
@@ -31,7 +31,6 @@ const EmployeeNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
       <div className="container-fluid">
-        {/* Logo */}
         <a className="navbar-brand d-flex align-items-center" href="#">
           <img
             src="https://media.licdn.com/dms/image/v2/D4E0BAQHS2G46ujkRug/company-logo_200_200/company-logo_200_200/0/1720723871576?e=2147483647&v=beta&t=Capag2dok1g8slpwxM2N_1a5oWwQE4n8zS33UQd2dZE"
@@ -53,7 +52,6 @@ const EmployeeNavbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Navbar Links */}
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
@@ -66,20 +64,20 @@ const EmployeeNavbar = () => {
                 View All Tickets
               </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink className="nav-link" to="/dashboard-employee/faqs" activeClassName="active-link">
                 FAQs
               </NavLink>
-            </li>
+            </li> */}
           </ul>
 
           {/* Right Section */}
           <ul className="navbar-nav ms-auto d-flex align-items-center">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link" href="#">
                 <i className="bi bi-bell-fill"></i>
               </a>
-            </li>
+            </li> */}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle d-flex align-items-center"

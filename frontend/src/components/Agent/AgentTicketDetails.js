@@ -29,7 +29,7 @@ const AgentTicketDetails = () => {
         const fetchTicketDetails = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await axios.get(`https://polysia-ticket-management-backend.onrender.com/api/ticket/${ticketId}`, {
+                const response = await axios.get(`/api/ticket/${ticketId}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -37,7 +37,7 @@ const AgentTicketDetails = () => {
                     ...response.data.ticket,
                     attachments: response.data.ticket.attachments.map(file => ({
                         ...file,
-                        fileUrl: `https://polysia-ticket-management-backend.onrender.com/${file.file_url}`,
+                        fileUrl: `/${file.file_url}`,
                     })),
                 };
                 setTicket(updatedTicket);

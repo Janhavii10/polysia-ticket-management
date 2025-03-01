@@ -21,7 +21,7 @@ const ChangePassword = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "https://polysia-ticket-management-backend.onrender.com/api/change-password",
+        "/api/change-password",
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },

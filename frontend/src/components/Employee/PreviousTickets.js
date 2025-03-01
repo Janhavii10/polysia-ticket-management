@@ -20,7 +20,7 @@ const PreviousTickets = () => {
         const fetchTickets = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await axios.get("https://polysia-ticket-management-backend.onrender.com/api/prevtickets", {
+                const response = await axios.get("/api/prevtickets", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setTickets(response.data.tickets);

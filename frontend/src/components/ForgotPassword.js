@@ -12,7 +12,7 @@ const ForgotPassword = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post("https://polysia-ticket-management-backend.onrender.com/api/forgot-password", { email });
+            const response = await axios.post("/api/forgot-password", { email });
             setMessage(response.data.message);
         } catch (error) {
             setMessage(error.response?.data?.message || "Something went wrong");
