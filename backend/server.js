@@ -1,5 +1,4 @@
 require('dotenv').config({ path: __dirname + '/.env' });
-console.log("Mongo URI from .env:", process.env.MONGO_URI);
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -36,7 +35,15 @@ const PORT = process.env.PORT || 5000;
 const SECRET_KEY = process.env.SECRET_KEY;
 
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: "https://ticket-management-k5lr.onrender.com", // Your frontend URL
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization",
+  credentials: true, // Allow authentication headers
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 // Middleware
 app.use(express.json());
@@ -47,7 +54,6 @@ app.use(ticketsRouter);
 // MongoDB Connection
 const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("MongoDB Connected")).catch(err => console.error(err));
-console.log("Mongo URI:", process.env.MONGO_URI);
 
 // Middleware to authenticate JWT
 const authenticate = (req, res, next) => {
