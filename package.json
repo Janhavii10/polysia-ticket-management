@@ -1,0 +1,12 @@
+{
+    "name": "ticket-management",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "start": "node backend/server.js",
+      "server": "node backend/server.js",
+      "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+    },
+    "dependencies": {}
+  }
+  

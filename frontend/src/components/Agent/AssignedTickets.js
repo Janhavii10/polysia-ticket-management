@@ -17,6 +17,8 @@ const AssignedTickets = () => {
         const fetchTickets = async () => {
             try {
                 const token = localStorage.getItem("token");
+                console.log(localStorage.getItem("token"));
+
     
                 if (!token) {
                     console.error("Unauthorized: Missing token.");

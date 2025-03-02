@@ -7,7 +7,7 @@ const AgentDashboard = () => {
     return (
         <>
             
-            <AssignedTickets />;
+            <AssignedTickets />
         </>
     );
 };

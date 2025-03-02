@@ -1,4 +1,5 @@
-require('dotenv').config();
+require('dotenv').config({ path: __dirname + '/.env' });
+console.log("Mongo URI from .env:", process.env.MONGO_URI);
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -44,7 +45,9 @@ app.use(ticketsRouter);
 
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("MongoDB Connected")).catch(err => console.error(err));
+const mongoURI = process.env.MONGO_URI;
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("MongoDB Connected")).catch(err => console.error(err));
+console.log("Mongo URI:", process.env.MONGO_URI);
 
 // Middleware to authenticate JWT
 const authenticate = (req, res, next) => {
@@ -62,7 +65,7 @@ const authenticate = (req, res, next) => {
 
 // Register Endpoint (For Testing)
 const bcrypt = require('bcryptjs'); // Import bcrypt
-const saltRounds = 10; // Number of salt rounds for hashing
+const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS); // Number of salt rounds for hashing
 
 app.post('/api/register', async (req, res) => {
   const { user_id, name, email, password, role, profile_image } = req.body;
@@ -97,15 +100,12 @@ app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Check if the user exists in the User collection
     const user = await User.findOne({ email });
     if (!user) {
-      // Check if the user exists in the PendingUser collection
       const pendingUser = await PendingUser.findOne({ email });
       if (pendingUser) {
         return res.status(403).json({ message: 'Your registration is pending admin approval' });
       }
-
       return res.status(404).json({ message: 'User not found' });
     }
 
@@ -116,11 +116,18 @@ app.post('/api/login', async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ id: user._id, email: user.email, role: user.role }, SECRET_KEY, {
-      expiresIn: '1h',
-    });
+    const token = jwt.sign(
+      { id: user._id, email: user.email, role: user.role },
+      process.env.JWT_SECRET,  // Use the correct env variable
+      { expiresIn: process.env.JWT_EXPIRES_IN }
+    );
 
-    res.json({ message: 'Login successful', token, role: user.role, user });
+    res.json({ 
+      message: 'Login successful', 
+      token, 
+      role: user.role, 
+      user: { id: user._id, email: user.email, role: user.role } // Send only necessary data 
+    });
   } catch (err) {
     res.status(500).json({ message: 'Server Error', error: err.message });
   }
