@@ -14,7 +14,7 @@ const ResetPassword = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`https://polysia-ticket-management-backend.onrender.com/api/reset-password/${token}`, {
+      const response = await axios.post(`/api/reset-password/${token}`, {
         newPassword,
         confirmPassword,
       });
