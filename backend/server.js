@@ -100,8 +100,6 @@ app.post('/api/register', async (req, res) => {
 
 // Login Endpoint
 
-
-
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
 
