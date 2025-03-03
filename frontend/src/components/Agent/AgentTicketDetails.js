@@ -54,7 +54,7 @@ const AgentTicketDetails = () => {
         const fetchComments = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await axios.get(`https://polysia-ticket-management-backend.onrender.com/api/ticket/${ticketId}/comments`, {
+                const response = await axios.get(`/api/ticket/${ticketId}/comments`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setComments(response.data.comments);
@@ -74,7 +74,7 @@ const AgentTicketDetails = () => {
         try {
             const token = localStorage.getItem("token");
             const response = await axios.post(
-                `https://polysia-ticket-management-backend.onrender.com/api/ticket/${ticketId}/comments`,
+                `/api/ticket/${ticketId}/comments`,
                 { content: newComment },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -106,7 +106,7 @@ const AgentTicketDetails = () => {
         try {
             const token = localStorage.getItem("token");
             await axios.put(
-                `https://polysia-ticket-management-backend.onrender.com/api/ticket/${ticketId}/resolve`,
+                `/api/ticket/${ticketId}/resolve`,
                 { status: "Resolved" },
                 {
                     headers: { Authorization: `Bearer ${token}` },
