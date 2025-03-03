@@ -28,29 +28,21 @@ const App = () => {
   const [userRole, setUserRole] = useState(localStorage.getItem("role"));
 
   useEffect(() => {
-    // Set Authorization Header Globally
-    const token = localStorage.getItem("token");
-    if (token) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    } else {
-      delete axios.defaults.headers.common["Authorization"];  // Remove header if token is missing
-    }
-  }, []); // Runs once when app loads
-
-  useEffect(() => {
     const handleStorageChange = () => {
       setUserRole(localStorage.getItem("role"));
     };
 
+    // Listen for login/logout changes
     window.addEventListener("storage", handleStorageChange);
+
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
 
   useEffect(() => {
-    setUserRole(localStorage.getItem("role"));
-  }, [location.pathname]);
+    setUserRole(localStorage.getItem("role"));  // Update role immediately on mount
+  }, [location.pathname]);  // Runs when route changes
 
   // Pages where Navbar is NOT needed
   const noNavbarRoutes = ["/login", "/", "/adminlogin", "/change-password", "/forgot-password"];
