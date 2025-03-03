@@ -24,7 +24,7 @@ const Register = () => {
     e.preventDefault();
     console.log('Form Data:', formData); // Debugging line
     try {
-      const response = await axios.post('https://polysia-ticket-management-backend.onrender.com/api/register', formData);
+      const response = await axios.post('/api/register', formData);
       setMessage(response.data.message);
     } catch (err) {
       setMessage(err.response?.data?.message || 'Error occurred');
