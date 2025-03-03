@@ -21,17 +21,26 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/login", formData);
+      const response = await axios.post("https://ticket-management-k5lr.onrender.com/api/login", formData);
+      console.log("Login Response:", response.data); // Debugging
   
       if (response.data.message === "Login successful") {
         const token = response.data.token;
         const user = response.data.user;
         const role = response.data.role;
+
+        if (!token) {
+          console.error("No token received from server");
+          setMessage("Error: No token received. Please try again.");
+          return;
+        }
   
         // Ensure token and user are stored correctly
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("role", role);
+
+        console.log("Stored Token:", localStorage.getItem("token")); // Debugging
 
         // Force re-render by updating a global state
       window.dispatchEvent(new Event("storage"));

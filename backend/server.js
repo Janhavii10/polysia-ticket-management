@@ -121,7 +121,7 @@ app.post('/api/login', async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { id: user._id, email: user.email, role: user.role },
+      { id: user.user_id, email: user.email, role: user.role },
       process.env.JWT_SECRET,  // Use the correct env variable
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
@@ -130,7 +130,7 @@ app.post('/api/login', async (req, res) => {
       message: 'Login successful', 
       token, 
       role: user.role, 
-      user: { id: user._id, email: user.email, role: user.role } // Send only necessary data 
+      user: { id: user.user_id, email: user.email, role: user.role, name: user.name } // Send only necessary data 
     });
   } catch (err) {
     res.status(500).json({ message: 'Server Error', error: err.message });

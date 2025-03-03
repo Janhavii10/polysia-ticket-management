@@ -20,7 +20,7 @@ const PreviousTickets = () => {
         const fetchTickets = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await axios.get("/api/prevtickets", {
+                const response = await axios.get("https://ticket-management-k5lr.onrender.com/api/prevtickets", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setTickets(response.data.tickets);

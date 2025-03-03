@@ -12,14 +12,21 @@ const EmployeeNavbar = () => {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem("token"); 
-        const response = await axios.get("/api/user/profile", {
+        console.log("Stored Token:", token); // Debugging
+      
+      if (!token) {
+        console.warn("No token found, user might be logged out.");
+        return;
+      }
+        const response = await axios.get("https://ticket-management-k5lr.onrender.com/api/user/profile", {
           headers: {
             Authorization: `Bearer ${token}`, // Add the token to the request headers
           },
         });
 
         // Set the user's name
-        setUserName(response.data.name);
+        console.log("User Profile Response:", response?.data); // Debugging
+        setUserName(response.data.name || "");
       } catch (error) {
         console.error("Error fetching user profile:", error.response?.data || error.message);
       }
