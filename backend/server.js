@@ -12,24 +12,7 @@ const path = require("path");
 
 const app = express();
 //--------------------------------------------------------------------------------
-const __dirname1 = path.resolve(); // Correct way to get absolute path
 
-// Middleware to parse JSON requests
-app.use(express.json());
-
-if (process.env.NODE_ENV === "production") {
-  // Serve React frontend in production
-  app.use(express.static(path.join(__dirname1, "/frontend/build")));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
-  );
-} else {
-  // Development mode: Show API message
-  app.get("/", (req, res) => {
-    res.send("API is running...");
-  });
-}
 // -------------------------------------------------------------------------------
 const PORT = process.env.PORT || 5000;
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -252,6 +235,25 @@ app.use(closeTicketRouter);
 
 const ratingRouter = require("./routes/rating");
 app.use(ratingRouter);
+
+const __dirname1 = path.resolve(); // Correct way to get absolute path
+
+// Middleware to parse JSON requests
+app.use(express.json());
+
+if (process.env.NODE_ENV === "production") {
+  // Serve React frontend in production
+  app.use(express.static(path.join(__dirname1, "/frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
+  );
+} else {
+  // Development mode: Show API message
+  app.get("/", (req, res) => {
+    res.send("API is running...");
+  });
+}
 
 // Server Start
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
