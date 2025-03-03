@@ -239,7 +239,7 @@ const assignAgentsRouter = require("./routes/assignagents"); // Updated import
 app.use(assignAgentsRouter); // Updated route
 
 const assignedTicketRouter = require("./routes/assignedtickets");
-app.use(assignedTicketRouter); 
+app.use("/api", assignedTicketRouter);
 
 const ticketDetailsRouter = require("./routes/ticketdetails");
 app.use(ticketDetailsRouter);

@@ -16,7 +16,7 @@ const router = express.Router();
 const Ticket = require("../models/Ticket"); // Import Ticket model
 const authenticate = require("../middleware/authenticate");
 
-router.get("/api/assignedtickets", authenticate, async (req, res) => {
+router.get("/assignedtickets", authenticate, async (req, res) => {
   try {
     const agentId = req.user.id; // Get logged-in user's ID
     const tickets = await Ticket.find({ agent_id: agentId });
