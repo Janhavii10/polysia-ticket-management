@@ -1,0 +1,131 @@
+.stats-card {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stat-value {
+    color: white;
+}
+
+.stats-card.allticket {
+    background: #FF6384;
+}
+
+.stats-card.closedticket {
+    background: #66bb6a;
+}
+
+.stats-card.totalagent {
+    background: #FFA726;
+}
+
+.stats-card.totalemp {
+    background: #36A2EB;
+}
+
+.stats-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stats-icon {
+    font-size: 30px;
+}
+
+.year-select {
+    width: 120px;
+    border-radius: 6px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    background: #f8f9fa;
+}
+
+.chart-column {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 15px;
+}
+
+/* General Card Styling */
+.full-width-card {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    padding: 15px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Chart Layout */
+.chart-container,
+.pie-chart-container {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+}
+
+/* Title Styling */
+h4 {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Year Dropdown */
+.year-select {
+    width: 110px;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #f1f3f5;
+    font-size: 14px;
+}
+
+/* Improve Charts - Make Line Chart Smoother */
+.chart-container canvas {
+    border-radius: 8px;
+}
+
+/* Responsive Grid for Better Spacing */
+.chart-column {
+    flex: 0 0 48%;
+    max-width: 48%;
+    margin: 1%;
+}
+
+/* Line Chart Enhancements */
+.line-chart-container canvas {
+    border-radius: 8px;
+}
+
+/* Smooth Hover Effect */
+.full-width-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.stats-container {
+    position: relative;
+    padding: 20px;
+    /* Ensure space for the button */
+}
+
+.back-button-container {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+}
+
+.button {
+    background-color: #36A2EB;
+}

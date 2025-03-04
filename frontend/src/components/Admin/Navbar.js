@@ -94,6 +94,11 @@ const AdminNavbar = () => {
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
+                  <a className="dropdown-item" href="/dashboard-admin/stats">
+                    See Ticket Trends
+                  </a>
+                </li>
+                <li>
                   <a className="dropdown-item" href="/change-password">
                     Change Password
                   </a>

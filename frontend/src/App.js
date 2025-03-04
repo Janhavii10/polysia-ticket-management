@@ -23,6 +23,7 @@ import EmployeeNavbar from "./components/Employee/Navbar";
 import AdminNavbar from "./components/Admin/Navbar";
 import PendingTickets from "./components/Agent/PendingTickets"
 import AgentResolvedTickets from "./components/Agent/ResolvedTickets";
+import Stats from './components/Admin/Stats';
 
 const App = () => {
   const location = useLocation();
@@ -54,7 +55,7 @@ const App = () => {
   }, [location.pathname]);
 
   // Pages where Navbar is NOT needed
-  const noNavbarRoutes = ["/login", "/", "/adminlogin", "/change-password", "/forgot-password"];
+  const noNavbarRoutes = ["/login", "/", "/adminlogin", "/change-password", "/forgot-password", "/dashboard-admin/stats"];
   const dynamicNoNavbarRoutes = ["/ticket/:ticketId", "/employee/ticket/:ticketId", "/reset-password/:token"];
   const isNoNavbarPage = noNavbarRoutes.includes(location.pathname) ||
     dynamicNoNavbarRoutes.some((route) => matchPath(route, location.pathname));
@@ -79,6 +80,7 @@ const App = () => {
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/dashboard-employee/previous-tickets" element={<PreviousTickets />} />
+        <Route path="/dashboard-admin/stats" element={<Stats />} />
         <Route path="/dashboard-admin/all-tickets" element={<TicketsPage />} />
         <Route path="/dashboard-admin/resolved-tickets" element={<ResolvedTickets />} />
         <Route path="/employee/ticket/:ticketId" element={<TicketDetails />} />

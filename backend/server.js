@@ -216,6 +216,9 @@ app.use(changePasswordRouter); // Change password route
 const prevTicketsRouter = require("./routes/prevtickets");
 app.use(prevTicketsRouter);
 
+const statsRoutes = require("./routes/stats");
+app.use("/api/stats", statsRoutes);
+
 const assignAgentsRouter = require("./routes/assignagents"); // Updated import
 app.use(assignAgentsRouter); // Updated route
 
