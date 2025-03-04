@@ -11,9 +11,7 @@ const path = require("path");
 
 
 const app = express();
-//--------------------------------------------------------------------------------
 
-// -------------------------------------------------------------------------------
 const PORT = process.env.PORT || 5000;
 const SECRET_KEY = process.env.SECRET_KEY;
 
@@ -236,6 +234,8 @@ app.use(closeTicketRouter);
 const ratingRouter = require("./routes/rating");
 app.use(ratingRouter);
 
+//--------------------------------------------------------------------------------
+
 const __dirname1 = path.resolve(); // Correct way to get absolute path
 
 // Middleware to parse JSON requests
@@ -254,6 +254,8 @@ if (process.env.NODE_ENV === "production") {
     res.send("API is running...");
   });
 }
+
+// -------------------------------------------------------------------------------
 
 // Server Start
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

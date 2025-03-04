@@ -32,9 +32,11 @@ const ResolvedTickets = () => {
     };
 
     return (
-        <>
-            <div className="container mt-4">
-                <h2>Resolved Tickets</h2>
+        <div className="container mt-4">
+            <h2>Resolved Tickets</h2>
+            {tickets.length === 0 ? (
+                <p>No resolved tickets yet.</p>
+            ) : (
                 <table className="table table-bordered">
                     <thead>
                         <tr>
@@ -75,8 +77,8 @@ const ResolvedTickets = () => {
                         ))}
                     </tbody>
                 </table>
-            </div>
-        </>
+            )}
+        </div>
     );
 };
 

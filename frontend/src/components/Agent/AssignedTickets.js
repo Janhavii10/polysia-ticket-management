@@ -169,7 +169,7 @@ const AssignedTickets = () => {
                     </div>
                 ))
             ) : (
-                <p className="no-tickets">No assigned tickets found.</p>
+                <p className="no-tickets">You have not been assigned any ticket yet.</p>
             )}
         </div>
     );
