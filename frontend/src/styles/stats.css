@@ -9,6 +9,13 @@
     justify-content: space-between;
 }
 
+/* Responsive Stat Cards */
+@media (max-width: 768px) {
+    .stats-card {
+        padding: 15px;
+    }
+}
+
 .stat-value {
     color: white;
 }
@@ -39,33 +46,8 @@
     font-size: 30px;
 }
 
-.year-select {
-    width: 120px;
-    border-radius: 6px;
-    padding: 5px;
-    border: 1px solid #ddd;
-    background: #f8f9fa;
-}
-
-.chart-column {
-    flex: 0 0 50%;
-    max-width: 50%;
-    padding: 15px;
-}
-
-/* General Card Styling */
-.full-width-card {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
-    background: #ffffff;
-    padding: 15px;
-    transition: 0.3s ease-in-out;
-}
-
 /* Chart Layout */
-.chart-container,
-.pie-chart-container {
+.chart-container, .pie-chart-container {
     height: 250px;
     display: flex;
     align-items: center;
@@ -73,6 +55,14 @@
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.8);
     padding: 15px;
+}
+
+/* Make Charts Responsive */
+@media (max-width: 992px) {
+    .chart-container, .pie-chart-container {
+        height: 200px;
+        padding: 10px;
+    }
 }
 
 /* Title Styling */
@@ -92,38 +82,34 @@ h4 {
 }
 
 /* Improve Charts - Make Line Chart Smoother */
-.chart-container canvas {
+.chart-container canvas, .line-chart-container canvas {
     border-radius: 8px;
 }
 
 /* Responsive Grid for Better Spacing */
-.chart-column {
-    flex: 0 0 48%;
-    max-width: 48%;
-    margin: 1%;
-}
-
-/* Line Chart Enhancements */
-.line-chart-container canvas {
-    border-radius: 8px;
+@media (max-width: 768px) {
+    .chart-column {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
 /* Smooth Hover Effect */
+.full-width-card {
+    transition: 0.3s ease-in-out;
+}
+
 .full-width-card:hover {
     transform: translateY(-3px);
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.12);
 }
 
+/* Button Responsiveness */
 .stats-container {
-    position: relative;
-    padding: 20px;
-    /* Ensure space for the button */
-}
-
-.back-button-container {
-    position: absolute;
-    top: 0px;
-    right: 20px;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .button {

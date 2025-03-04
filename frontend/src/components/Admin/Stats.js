@@ -106,7 +106,7 @@ const Stats = () => {
                     { title: "Total Agents", value: totalAgents, color: "totalagent" },
                     { title: "Total Employees", value: totalEmployees, color: "totalemp" },
                 ].map((stat, index) => (
-                    <Col key={index} md={3}>
+                    <Col key={index} xs={12} sm={6} md={3} className="mb-3">
                         <Card className={`stats-card ${stat.color}`}>
                             <div className="stats-content">
                                 <div>
@@ -119,6 +119,7 @@ const Stats = () => {
                     </Col>
                 ))}
             </Row>
+
 
             {/* Ticket Analytics Charts */}
             <Row className="mt-4">
@@ -168,7 +169,7 @@ const Stats = () => {
                     </Card>
                 </Col>
             </Row>
-            
+
         </Container>
     );
 };
