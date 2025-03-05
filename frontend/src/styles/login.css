@@ -9,6 +9,7 @@
   
   /* Login form styling */
   .login-form {
+    position: relative;
     background: white;
     padding: 2rem;
     border-radius: 10px;
@@ -80,13 +81,13 @@
   
   .close-icon {
     position: absolute;
-    top: 10px;
+    top: 12px;
     right: 15px;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
-    color: #333;
-  }
-  .close-icon:hover {
-    color: #ff0000;
+    color: lightslategray;
   }
   
+  .close-icon:hover {
+    color: lightslategray;
+  }
