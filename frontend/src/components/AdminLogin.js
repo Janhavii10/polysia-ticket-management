@@ -48,6 +48,7 @@ const AdminLogin = () => {
   return (
     <div className="login-container">
       <div className="login-form">
+      <i className="bi bi-x-lg close-icon" onClick={() => navigate('/login')}></i>
         <h1>Admin Login</h1>
         <form onSubmit={handleSubmit}>
           <input
